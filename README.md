@@ -60,7 +60,7 @@ Navigate to http://localhost:3000 to see the app.
 
 **🧬 Folder Structure**
 
-``bash
+```bash
 /
 ├── app/               # Next.js app directory (App Router)
 │   └── page.jsx       # Main landing page
@@ -72,7 +72,7 @@ Navigate to http://localhost:3000 to see the app.
 ├── .env.local         # Local environment variables
 ├── package.json
 └── README.md
-``bash
+```bash
 
 **🧾 Deployment on Vercel**
 Vercel is the recommended deployment platform for Next.js apps.
