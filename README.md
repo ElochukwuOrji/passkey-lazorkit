@@ -21,13 +21,13 @@ This project is a full-stack Solana dApp built with **Next.js** and integrated w
 
 ## 🚀 Getting Started
 
-### 1. Clone the repository
+** 1. Clone the repository**
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 cd YOUR_REPO_NAME
 
-**2. Install dependencies**
+** 2. Install dependencies**
 
 npm install
 # or
