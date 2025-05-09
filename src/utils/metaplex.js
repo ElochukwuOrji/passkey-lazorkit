@@ -7,28 +7,28 @@ export function createMetaplexAdapter(publicKey, executeTransaction) {
   return {
     publicKey: new PublicKey(publicKey),
     async signTransaction(transaction) {
-      // Since Lazor Kit doesn't have a direct signTransaction method,
-      // we need to handle transactions differently
-      
-      // Make sure the transaction has the correct blockhash and fee payer
-      if (!transaction.recentBlockhash) {
-        const { blockhash } = await connection.getLatestBlockhash();
-        transaction.recentBlockhash = blockhash;
-      }
-      
-      if (!transaction.feePayer) {
-        transaction.feePayer = new PublicKey(publicKey);
-      }
-      
-      // For Metaplex operations, we'll need to adapt the executeTransaction function
-      // This is placeholder implementation that will need to be adapted to your needs
-      await executeTransaction({
-        transaction: transaction,
-        // Add any other required parameters
-      });
-      
-      return transaction;
-    },
+     const { blockhash } = await connection.getLatestBlockhash();
+     transaction.recentBlockhash = blockhash;
+     transaction.feePayer = new PublicKey(this.publicKey);
+
+  // LazorKit executes transaction — but Metaplex expects the transaction signed locally
+     const txSig = await executeTransaction({
+     transaction,
+     pubkey: new PublicKey(this.publicKey).toBuffer(),
+     arbitraryInstruction: transaction.instructions[0], // or something more dynamic
+     signature: Buffer.from([]), // Adjust if needed
+     message: {
+      nonce: 1,
+      timestamp: new anchor.BN(Date.now()),
+      payload: Buffer.from([]),
+      },
+     });
+
+  // Metaplex just expects the transaction returned here — the tx itself won't include the signature
+  // So we return it untouched (even though it's technically not "signed")
+     return transaction;
+   },
+
     async signAllTransactions(transactions) {
       return Promise.all(transactions.map(tx => this.signTransaction(tx)));
     },
