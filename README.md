@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ⚡ Solana dApp with Next.js + Lazor Kit
 
-## Getting Started
+This project is a full-stack Solana dApp built with **Next.js** and integrated with **Lazor Kit** for wallet connectivity. It supports:
 
-First, run the development server:
+- ✅ Test transactions
+- ✅ SOL transfers
+- ✅ SPL token transfers
+- ✅ NFT minting from a Candy Machine (Metaplex v2)
+
+---
+
+## 📦 Tech Stack
+
+- [Next.js 13+ (App Router)](https://nextjs.org/)
+- [Solana Web3.js](https://solana-labs.github.io/solana-web3.js/)
+- [@solana/spl-token](https://github.com/solana-labs/solana-program-library)
+- [@metaplex-foundation/js](https://docs.metaplex.com/)
+- [Lazor Kit](https://github.com/lazorhq/lazor-kit)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 
 ```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+cd YOUR_REPO_NAME
+
+### 2. Install dependencies
+
+npm install
+# or
+yarn install
+
+### 3. Set up environment variables
+
+**Create a .env.local file:**
+touch .env.local
+
+**Add your environment-specific settings. For example:**
+
+NEXT_PUBLIC_CANDY_MACHINE_ID=YOUR_CANDY_MACHINE_ID
+
+**🧪 Testing Locally**
+Start the dev server
+
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Navigate to http://localhost:3000 to see the app.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+**Run test transaction**
+1. Connect your wallet (via Lazor Kit).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Trigger the test transaction (transfers a small amount of SOL to self).
 
-## Learn More
+3. Check devnet explorer for confirmation.
 
-To learn more about Next.js, take a look at the following resources:
+**🧬 Folder Structure**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+/
+├── app/               # Next.js app directory (App Router)
+│   └── page.jsx       # Main landing page
+├── lib/
+│   ├── solana.js      # Connection to Solana
+│   ├── transactions.js # SOL + token transfer utils
+│   └── metaplex.js     # Metaplex + NFT minting
+├── public/            # Static assets
+├── .env.local         # Local environment variables
+├── package.json
+└── README.md
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**🧾 Deployment on Vercel**
+Vercel is the recommended deployment platform for Next.js apps.
 
-## Deploy on Vercel
+1. Push code to GitHub
+Ensure your latest changes are committed:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+git add .
+git commit -m "Ready for deployment"
+git push origin main
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. Deploy via Vercel
+Go to https://vercel.com/new
+
+Select your GitHub repository
+
+Add environment variables (NEXT_PUBLIC_CANDY_MACHINE_ID, etc.)
+
+Click Deploy
+
+3. Fixing SSR issues (e.g., localStorage error)
+Ensure browser-only APIs like localStorage or window are only used inside useEffect and client components:
+
+'use client';
+
+import { useEffect, useState } from 'react';
+
+export default function Page() {
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const t = localStorage.getItem('token');
+    setToken(t);
+  }, []);
+
+  return <div>{token}</div>;
+}
+
+🛠️ Debugging Tips
+localStorage is not defined: Move all usage into useEffect.
+
+TypeError: Cannot read properties of null: Make sure wallet is connected before calling transactions.
+
+Use Solana Explorer (devnet) to trace transactions.
+
+🎉 Credits
+Solana Labs
+
+Metaplex
+
+Lazor Kit
+
+Next.js
+
+📜 License
+MIT License.
