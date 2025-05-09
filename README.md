@@ -74,6 +74,7 @@ Navigate to http://localhost:3000 to see the app.
 └── README.md
 ```
 
+
 **🧾 Deployment on Vercel**
 Vercel is the recommended deployment platform for Next.js apps.
 
@@ -112,6 +113,7 @@ export default function Page() {
 }
 
 **🛠️ Debugging Tips**
+
 localStorage is not defined: Move all usage into useEffect.
 
 TypeError: Cannot read properties of null: Make sure wallet is connected before calling transactions.
@@ -119,6 +121,7 @@ TypeError: Cannot read properties of null: Make sure wallet is connected before 
 Use Solana Explorer (devnet) to trace transactions.
 
 **🎉 Credits**
+
 Solana Labs
 
 Metaplex
