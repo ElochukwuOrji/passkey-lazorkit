@@ -21,19 +21,19 @@ This project is a full-stack Solana dApp built with **Next.js** and integrated w
 
 ## 🚀 Getting Started
 
-** 1. Clone the repository**
+### 1. Clone the repository**
 
-```bash
+
 git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 cd YOUR_REPO_NAME
 
-** 2. Install dependencies**
+### 2. Install dependencies
 
 npm install
 # or
 yarn install
 
-**3. Set up environment variables**
+### 3. Set up environment variables
 
 **Create a .env.local file:**
 touch .env.local
@@ -75,14 +75,14 @@ Navigate to http://localhost:3000 to see the app.
 **🧾 Deployment on Vercel**
 Vercel is the recommended deployment platform for Next.js apps.
 
-1. Push code to GitHub
+**1. Push code to GitHub**
 Ensure your latest changes are committed:
 
 git add .
 git commit -m "Ready for deployment"
 git push origin main
 
-2. Deploy via Vercel
+**2. Deploy via Vercel**
 Go to https://vercel.com/new
 
 Select your GitHub repository
@@ -91,7 +91,7 @@ Add environment variables (NEXT_PUBLIC_CANDY_MACHINE_ID, etc.)
 
 Click Deploy
 
-3. Fixing SSR issues (e.g., localStorage error)
+**3. Fixing SSR issues (e.g., localStorage error)**
 Ensure browser-only APIs like localStorage or window are only used inside useEffect and client components:
 
 'use client';
@@ -109,14 +109,14 @@ export default function Page() {
   return <div>{token}</div>;
 }
 
-🛠️ Debugging Tips
+**🛠️ Debugging Tips**
 localStorage is not defined: Move all usage into useEffect.
 
 TypeError: Cannot read properties of null: Make sure wallet is connected before calling transactions.
 
 Use Solana Explorer (devnet) to trace transactions.
 
-🎉 Credits
+**🎉 Credits**
 Solana Labs
 
 Metaplex
@@ -125,5 +125,5 @@ Lazor Kit
 
 Next.js
 
-📜 License
+**📜 License**
 MIT License.
