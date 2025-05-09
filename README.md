@@ -27,13 +27,13 @@ This project is a full-stack Solana dApp built with **Next.js** and integrated w
 git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 cd YOUR_REPO_NAME
 
-### 2. Install dependencies
+#### 2. Install dependencies
 
 npm install
 # or
 yarn install
 
-### 3. Set up environment variables
+##### 3. Set up environment variables
 
 **Create a .env.local file:**
 touch .env.local
