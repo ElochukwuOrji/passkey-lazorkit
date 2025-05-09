@@ -76,9 +76,11 @@ Navigate to http://localhost:3000 to see the app.
 
 
 **🧾 Deployment on Vercel**
+
 Vercel is the recommended deployment platform for Next.js apps.
 
 **1. Push code to GitHub**
+
 Ensure your latest changes are committed:
 
 git add .
@@ -86,6 +88,7 @@ git commit -m "Ready for deployment"
 git push origin main
 
 **2. Deploy via Vercel**
+
 Go to https://vercel.com/new
 
 Select your GitHub repository
@@ -95,6 +98,7 @@ Add environment variables (NEXT_PUBLIC_CANDY_MACHINE_ID, etc.)
 Click Deploy
 
 **3. Fixing SSR issues (e.g., localStorage error)**
+
 Ensure browser-only APIs like localStorage or window are only used inside useEffect and client components:
 
 'use client';
@@ -112,6 +116,7 @@ export default function Page() {
   return <div>{token}</div>;
 }
 
+
 **🛠️ Debugging Tips**
 
 localStorage is not defined: Move all usage into useEffect.
@@ -119,6 +124,7 @@ localStorage is not defined: Move all usage into useEffect.
 TypeError: Cannot read properties of null: Make sure wallet is connected before calling transactions.
 
 Use Solana Explorer (devnet) to trace transactions.
+
 
 **🎉 Credits**
 
