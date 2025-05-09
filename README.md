@@ -59,7 +59,7 @@ Navigate to http://localhost:3000 to see the app.
 3. Check devnet explorer for confirmation.
 
 **🧬 Folder Structure**
-``
+csharp
 /
 ├── app/               # Next.js app directory (App Router)
 │   └── page.jsx       # Main landing page
