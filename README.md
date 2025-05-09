@@ -59,7 +59,8 @@ Navigate to http://localhost:3000 to see the app.
 3. Check devnet explorer for confirmation.
 
 **🧬 Folder Structure**
-csharp
+
+``bash
 /
 ├── app/               # Next.js app directory (App Router)
 │   └── page.jsx       # Main landing page
@@ -71,7 +72,7 @@ csharp
 ├── .env.local         # Local environment variables
 ├── package.json
 └── README.md
-``
+``bash
 
 **🧾 Deployment on Vercel**
 Vercel is the recommended deployment platform for Next.js apps.
